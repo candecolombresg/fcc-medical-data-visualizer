@@ -13,7 +13,7 @@ df['overweight'] = [1 if x > 25 else 0 for x in df['weight']/(df['height']/100)*
 df['cholesterol'] = [1 if x > 1 else 0 for x in df['cholesterol']]
 df['gluc'] = [1 if x > 1 else 0 for x in df['gluc']]
 df['sex'] = [1 if x > 1 else 0 for x in df['sex']]
-#df.rename({'sex':'gender'},axis=1,inplace=True) 
+#df.rename({'sex':'gender'},axis=1,inplace=True) Seems that fcc change this requirement
 
 # Draw Categorical Plot
 def draw_cat_plot():
@@ -25,7 +25,7 @@ def draw_cat_plot():
     df_cat = df_cat.groupby(['cardio','variable','value'], as_index=False).count()
 
     # Draw the catplot with 'sns.catplot()'
-    fig = sns.catplot(data = df_cat, x='variable', y='total', col='cardio', hue='value', kind='bar').figure
+    fig = sns.catplot(data = df_cat, x='variable', y='total', col='cardio', hue='value', kind='bar').fig
 
     # Do not modify the next two lines
     fig.savefig('catplot.png')
